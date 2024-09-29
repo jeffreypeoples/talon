@@ -46,7 +46,6 @@ push file <number>:
     insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && mv \"$file\" ~/storage/ || echo 'File not found or error occurred'")
     key(enter)
 
-    
 # Command to list files in the storage directory
 list storage:
     insert("ls -p ~/storage | grep -v / | nl -w2 -s') '")
@@ -55,6 +54,16 @@ list storage:
 # Command to pull a numbered file from storage to current directory
 pull file <number>:
     insert("file=$(ls -p ~/storage | grep -v / | sed -n {number}p) && [ -f ~/storage/\"$file\" ] && mv ~/storage/\"$file\" . || echo 'File not found or error occurred'")
+    key(enter)
+    
+# Command to delete a numbered file in the current directory
+delete file <number>:
+    insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && rm \"$file\" && echo 'File deleted successfully' || echo 'File not found or error occurred'")
+    key(enter)
+    
+# Command to delete a numbered file in the storage directory
+delete storage file <number>:
+    insert("file=$(ls -p ~/storage | grep -v / | sed -n {number}p) && [ -f ~/storage/\"$file\" ] && rm ~/storage/\"$file\" && echo 'File deleted successfully from storage' || echo 'File not found in storage or error occurred'")
     key(enter)
 
 # Command to clear all files from the storage directory
