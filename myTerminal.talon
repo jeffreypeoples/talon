@@ -45,6 +45,10 @@ list files:
 push file <number>:
     insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && mv \"$file\" ~/storage/ || echo 'File not found or error occurred'")
     key(enter)
+# Command to copy a numbered file to the storage directory
+copy file <number>:
+    insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && cp \"$file\" ~/storage/ && echo 'File copied to storage successfully' || echo 'File not found or error occurred'")
+    key(enter)
 
 # Command to list files in the storage directory
 list storage:

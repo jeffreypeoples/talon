@@ -1,0 +1,1 @@
+(look at | cursor move) <user.timestamped_prose>$: user.move_cursor_to_word(timestamped_prose)
