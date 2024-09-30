@@ -13,6 +13,10 @@ migrate db:
 make db migrations:
     insert("docker compose run backend python3 manage.py makemigrations")
     key(enter)
+# Command to run backend debug using Docker Compose
+run backend debug:
+    insert("docker-compose -f ../docker-compose-debug.yml down backend && docker-compose -f ../docker-compose-debug.yml up backend")
+    key(enter)
 
 # Command to go up to parent directory
 jump up:
