@@ -45,3 +45,27 @@ zoom in:
 zoom out:
     key(cmd--)
 
+# Increase the width of the sidebar or panel
+increase editor width:
+    key(ctrl-alt-])
+
+# Decrease the width of the sidebar or panel
+decrease editor width:
+    key(ctrl-alt-[)
+
+# increase width of selected panel
+increase size:
+    key(alt-shift-ctrl-])
+
+# decrease width of selected panel
+decrease size:
+    key(alt-shift-ctrl-[)
+
+# Maximize current editor panel width
+maximize panel:
+    user.vscode("workbench.action.toggleEditorWidths")
+
+# Reset editor panel widths
+reset panels:
+    user.vscode("workbench.action.evenEditorWidths")
+

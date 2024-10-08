@@ -15,7 +15,7 @@ make db migrations:
     key(enter)
 # Command to run backend debug using Docker Compose
 run backend debug:
-    insert("docker-compose -f ../docker-compose-debug.yml down backend && docker-compose -f ../docker-compose-debug.yml up backend")
+    insert("docker compose -f ../docker-compose-debug.yml down backend && docker compose -f ../docker-compose-debug.yml up backend")
     key(enter)
 
 # Command to go up to parent directory

@@ -86,7 +86,9 @@ window center:
 
 window restore:
     key(ctrl-alt-0)
-
+    
+window quit:
+    key(cmd-q)
 
 
     
