@@ -69,3 +69,7 @@ maximize panel:
 reset panels:
     user.vscode("workbench.action.evenEditorWidths")
 
+# open quick fixed menu
+fix that:
+    key(cmd-.)
+

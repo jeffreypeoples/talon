@@ -109,4 +109,21 @@ go talon:
 make directory:
     insert("mkdir ")
     
+# command to go to node service directory and run npm test:backendIntegration
+test backend:
+    insert("cd ~/CresicorNext/node_service && npm run test:backendIntegration")
+    key(enter)
 
+# Command to list git status files with numbers
+list git status:
+    insert("git status -s | nl -w2 -s') '")
+    key(enter)
+
+# Command to add or restore a numbered git status file
+git task (add | restore) <number>:
+    insert("file=$(git status -s | sed -n {number}p | awk '{print $2}') && git {git_action} \"$file\" && echo '{git_action_past} $file'")
+    key(enter)
+# command to clear the terminal    
+clear terminal:
+    insert("clear")
+    key(enter)
