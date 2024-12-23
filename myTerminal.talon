@@ -1,4 +1,3 @@
-app: terminal
 -
 
 search actions:
@@ -13,6 +12,11 @@ migrate db:
 make db migrations:
     insert("docker compose run backend python3 manage.py makemigrations")
     key(enter)
+# Command run backend using docker compose
+run backend:
+    insert("docker compose up backend")
+    key(enter)
+
 # Command to run backend debug using Docker Compose
 run backend debug:
     insert("docker compose -f ../docker-compose-debug.yml down backend && docker compose -f ../docker-compose-debug.yml up backend")
@@ -49,6 +53,7 @@ list files:
 push file <number>:
     insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && mv \"$file\" ~/storage/ || echo 'File not found or error occurred'")
     key(enter)
+
 # Command to copy a numbered file to the storage directory
 copy file <number>:
     insert("file=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$file\" ] && cp \"$file\" ~/storage/ && echo 'File copied to storage successfully' || echo 'File not found or error occurred'")
@@ -99,11 +104,10 @@ go home:
     insert("cd ~")
     key(enter)
 
-    # command to go directly to the talon home
+# command to go directly to the talon home
 go talon:
     insert("cd /Users/peoples/.talon/user")
     key(enter)
-
 
 # command to make a new directory
 make directory:
@@ -119,11 +123,27 @@ list git status:
     insert("git status -s | nl -w2 -s') '")
     key(enter)
 
-# Command to add or restore a numbered git status file
-git task (add | restore) <number>:
-    insert("file=$(git status -s | sed -n {number}p | awk '{print $2}') && git {git_action} \"$file\" && echo '{git_action_past} $file'")
+# Command to add a numbered git status file
+git task add <number>:
+    insert("file=$(git status -s | sed -n {number}p | cut -c4-) && git add \"$file\"")
     key(enter)
+
+# Command to restore a numbered git status file
+git task restore <number>:
+    insert("file=$(git status -s | sed -n {number}p | cut -c4-) && git restore \"$file\"")
+    key(enter)
+
+# Command to rename a numbered file
+rename file <number> to <user.text>:
+    insert("oldfile=$(ls -p | grep -v / | sed -n {number}p) && [ -f \"$oldfile\" ] && mv \"$oldfile\" \"{text}\" && echo \"File renamed to {text}\" || echo 'File not found or error occurred'")
+    key(enter)
+
 # command to clear the terminal    
 clear terminal:
     insert("clear")
+    key(enter)
+
+# command to run front end dev with npm run dev
+run front end dev:
+    insert("npm run dev")
     key(enter)

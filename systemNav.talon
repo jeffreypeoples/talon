@@ -5,10 +5,16 @@ pilot:
 show desktop:
     key(f11)
 
-win left:
+pilot left:
     key(ctrl-left)
 
-win right:
+pilot right:
+    key(ctrl-right)
+
+pilot previous:
+    key(ctrl-left) 
+
+pilot next:
     key(ctrl-right)
 
 spotlight:
@@ -90,7 +96,17 @@ window restore:
 window quit:
     key(cmd-q)
 
+screenshot:
+    key(cmd-shift-4)
 
+screenshot full:
+    key(cmd-shift-3)
+
+screenshot window:
+    key(cmd-shift-4 space)
+
+screenshot options:
+    key(cmd-shift-5)
     
     
     

@@ -72,4 +72,6 @@ reset panels:
 # open quick fixed menu
 fix that:
     key(cmd-.)
-
+# rename symbol with f2
+rename symbol:
+    key(f2)
